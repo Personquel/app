@@ -472,8 +472,8 @@ async function initDatabase() {
     }
 
     // Load user questions from CSV data
-    const userCount = await pool.query('SELECT COUNT(*) FROM user_questions');
-    if (parseInt(userCount.rows[0].count) === 0) {
+    const userQuestionCount = await pool.query('SELECT COUNT(*) FROM user_questions');
+    if (parseInt(userQuestionCount.rows[0].count) === 0) {
       const csvPath = path.join(__dirname, 'user.csv');
       if (fs.existsSync(csvPath)) {
         const csvData = fs.readFileSync(csvPath, 'utf8');
